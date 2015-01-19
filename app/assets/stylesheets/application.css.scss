@@ -1,0 +1,158 @@
+@import "bootstrap-sprockets";
+@import 'bootstrap';
+@import 'bootstrap-datetimepicker';
+
+/* Color Palate
+-6441a5 -Med Purp
+-5930a6 -Dark Purp
+-6f51a6 -Light Purp
+-333333 -Graphite
+-cccccc -Light Gray
+-999999 -Med Gray
+-666666 -Dark Gray
+*/
+
+
+body {
+  background-color: #CCCCCC;
+  font-family: Helvetica Neue;
+}
+
+
+button[type=button] {
+  background: #6441a5;
+  color: white;
+  width: 288px;
+  height: 48px;
+  font-size: 24px;
+  border: 0;
+  cursor: pointer;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 6px;
+  &:hover {
+    background: #5930a6;
+  }
+}
+
+#TopBar {
+  background-color: #111111;
+  margin-top: -1.5%;
+}
+
+
+#Logo h1 {
+  text-align: center;
+  margin-left: 1%;
+  font-family: Open Sans;
+  font-size: 36px;
+  color: #eeeeee;
+  margin-bottom: 12px;
+}
+
+#Logo a:link {
+  color: #eeeeee;
+  text-decoration: none;
+}
+
+#Logo a:visited {
+  color: #eeeeee;
+  text-decoration: none;
+}
+
+#Logo a:hover {
+  color: #bbbbbb;
+  text-decoration: none;
+}
+
+#Logo a:active {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+#LoginBox {
+  background-color: #999999;
+  margin-bottom: 12px;
+  height: 288px;
+}
+
+#TopStreams {
+  float: center;
+}
+
+#TopStreamsTable {
+  float: center;
+  width: 40%
+}
+
+#TopStreamsTable td {
+  width: 33.3%
+}
+
+#NextStreams {
+  float: center;
+}
+
+#NextStreamsTable {
+  float: center;
+  width: 50%
+}
+
+#NextStreamsTable td {
+  width: 20%
+}
+
+#UserStreams {
+  float: center;
+}
+
+#UserStreamsTable {
+  float: center;
+  width: 40%
+}
+
+#UserStreamsTable td {
+  width: 25%
+}
+
+#RightShift {
+  float: right;
+  margin-bottom: 12px;
+}
+
+#LoginButton {
+  float: right;
+  margin-right: 60%;
+  margin-top: 40%;
+}
+
+#BotBar {
+  background-color: #333333;
+}
+
+#BotBarText {
+  float: none;
+  margin-top: auto;
+  color: #6F51A6;
+  font-weight: normal;
+  font-size: 12px;
+  text-align: center;
+}
+
+#MidFrame {
+  background-color: #999999;
+  height: 288px;
+  margin-top: -4.6%;
+}
+
+#ProfileName p {
+  text-decoration: underline;
+  text-align: center;
+  font-size: 72px;
+  margin-bottom: 24px;
+}
+
+#ViewSelection {
+  width: 80%;
+  margin-left: 15%;
+}

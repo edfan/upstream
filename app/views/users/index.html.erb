@@ -1,0 +1,52 @@
+<% if !@user %>
+<a href="/login">Log in</a><br>
+<% else %>
+<%= link_to "My streaming profile", user_path(@user) %><br>
+<a href="/update">Update followed streams</a><br>
+<a href="/logout">Log out</a><br><br>
+<% end %>
+
+<div id='TopStreams'>
+  <p style="text-decoration: underline">Streams live now</p>
+  <table id='TopStreamsTable'>
+
+    <tr>
+      <th>Streamer</th>
+      <th>Game</th>
+      <th>Viewers</th>
+    </tr>
+
+    <% @liveStreams.each do |stream| %>
+    <tr>
+      <td><a href=" <%= stream['channel']['url'] %> " target="_blank"> <%= stream["channel"]["display_name"] %></a></td>
+      <td><%= stream["game"] %> </td>
+      <td><%= stream["viewers"] %> </td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+<br>
+<% if @scheduledStreams %>
+<div id='NextStreams'>
+  <p style="text-decoration: underline">Upcoming streams</p>
+  <table id='NextStreamsTable'>
+    <tr>
+      <th>Start time</th>
+      <th>Streamer</th>
+      <th>Title</th>
+      <th>Game</th>
+      <th>Full description</th>
+    </tr>
+
+    <% @scheduledStreams.each do |stream| %>
+    <tr>
+      <td><%= stream.start.strftime("%b %d, %I:%M %p") %></td>
+      <td><a href=" <%= user_path(stream.user) %>"><%= stream.user.name %></a></td>
+      <td><%= stream.title %></td>
+      <td><%= stream.game %></td>
+      <td><%= link_to "More...", user_stream_path(stream.user, stream) %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+<% end %>

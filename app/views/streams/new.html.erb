@@ -1,0 +1,51 @@
+<h3>New Scheduled Stream</h3>
+
+<%= form_for ([@user, @user.streams.build]) do |f| %>
+
+
+<p>
+  <%= f.label :title %><br>
+  <%= f.text_field :title %>
+</p>
+
+<p>
+  <%= f.label :game %><br>
+  <%= f.text_field :game %>
+</p>
+
+<p>
+  <%= f.label :description %><br>
+  <%= f.text_area :description %>
+</p>
+
+<p>
+  <%= f.label "Start time" %><br>
+  <!--
+  <div class="container">
+  <div class="row">
+  <div class='col-sm-6'>
+  <div class="form-group">
+  <div class='input-group date' id='stream_start' name="stream[start]">
+  <input type='text' class="form-control" />
+  <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+$(function () {
+$('#stream_start').datetimepicker();
+});
+</script>
+</div>
+</div>
+-->
+<%= f.datetime_select :start %>
+</p>
+
+
+<p>
+  <%= f.submit %>
+</p>
+
+<% end %>
+<%= link_to 'Back', url_for(@user) %>
