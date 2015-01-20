@@ -1,21 +1,6 @@
-development:
+default: &default
   adapter: postgresql
   encoding: unicode
-  database: myapp_development
+  # For details on connection pooling, see rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
-  username: isspkmn
-  password:
-test:
-  adapter: postgresql
-  encoding: unicode
-  database: myapp_test
-  pool: 5
-  username: isspkmn
-  password:
-production:
-  adapter: postgresql
-  encoding: unicode
-  database: myapp_production
-  pool: 5
-  username: isspkmn
-  password:
