@@ -19,7 +19,12 @@
 
     <% @liveStreams.each do |stream| %>
     <tr>
+      <% @suser = User.find_by_name(stream["channel"]["display_name"]) %>
+      <% if @suser %>
+      <td><a href=" <%= user_path(suser) %>"><%= @suser.name %></a></td>
+      <% else %>
       <td><a href=" <%= stream['channel']['url'] %> " target="_blank"> <%= stream["channel"]["display_name"] %></a></td>
+      <% end %>
       <td><%= stream["game"] %> </td>
       <td><%= stream["viewers"] %> </td>
     </tr>
