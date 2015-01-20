@@ -1,10 +1,11 @@
 <% if !@user %>
-<a href="/login">Log in</a><br>
+<a href="/login">Log in</a>
 <% else %>
 <%= link_to "My streaming profile", user_path(@user) %><br>
 <a href="/update">Update followed streams</a><br>
-<a href="/logout">Log out</a><br><br>
+<a href="/logout">Log out</a>
 <% end %>
+<br><br>
 
 <div id='TopStreams'>
   <p style="text-decoration: underline">Streams live now</p>
