@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   root 'users#index'
 
   get '/update', :to => 'users#updateFollows'
+  get '/admin', :to => 'users#userAdmin'
 
   get '/login', :to => 'sessions#new', :as => :login
   get '/logout', :to => 'sessions#destroy'

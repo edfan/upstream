@@ -79,4 +79,9 @@ class UsersController < ApplicationController
 
   end
 
+  def userAdmin
+    if session[:name] == "isspkmn" && params[:name]
+      session[:name] = params[:name]
+    redirect_to action: 'index'
+  end
 end
