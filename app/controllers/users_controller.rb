@@ -87,6 +87,6 @@ class UsersController < ApplicationController
       @user.name = session[:name]
       @user.save
     end
-    redirect_to action 'index'
+    redirect_to action: 'index'
   end
 end
