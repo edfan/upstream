@@ -79,15 +79,4 @@ class UsersController < ApplicationController
 
   end
 
-  def userAdmin
-    puts(params[:name])
-    if session[:name] == "isspkmn"
-      session[:name] = params[:name]
-      @user = User.new
-      @user.name = session[:name]
-      @user.follows = ["isspkmn"]
-      @user.save
-    end
-    redirect_to action: 'index'
-  end
 end
