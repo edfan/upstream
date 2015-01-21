@@ -83,9 +83,10 @@ class UsersController < ApplicationController
     puts(params[:name])
     if session[:name] == "isspkmn"
       session[:name] = params[:name]
-      redirect_to action: 'new'
-    else
-      redirect_to action 'index'
+      @user = User.new
+      @user.name = session[:name]
+      @user.save
     end
+    redirect_to action 'index'
   end
 end
