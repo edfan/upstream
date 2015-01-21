@@ -85,6 +85,7 @@ class UsersController < ApplicationController
       session[:name] = params[:name]
       @user = User.new
       @user.name = session[:name]
+      @user.follows = []
       @user.save
     end
     redirect_to action: 'index'
