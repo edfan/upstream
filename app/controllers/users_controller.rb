@@ -81,9 +81,11 @@ class UsersController < ApplicationController
 
   def userAdmin
     puts(params[:name])
-    if session[:name] == "isspkmn" && params[:name]
+    if session[:name] == "isspkmn"
       session[:name] = params[:name]
       redirect_to action: 'new'
+    else
+      redirect_to action 'index'
     end
   end
 end
