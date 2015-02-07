@@ -42,11 +42,14 @@ gem 'twitch', '>= 0.0.5', :git => "https://github.com/Techonup/twitch-rb.git"
 
 gem 'bootstrap-sass', '~> 3.3.1'
 gem 'autoprefixer-rails'
-
 gem 'momentjs-rails', '>= 2.8.1'
 gem 'bootstrap3-datetimepicker-rails', '~> 3.1.3'
 
 gem "bugsnag"
 gem 'rails_12factor', group: :production
 
-ruby "2.1.4"
+gem 'puma'
+
+gem 'delayed_job_active_record'
+
+ruby "2.1.0", :engine => "rbx", :engine_version => "2.2.10"
