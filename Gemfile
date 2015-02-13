@@ -53,4 +53,4 @@ gem 'puma'
 
 gem 'delayed_job_active_record'
 
-ruby "2.1.0", :engine => "rbx", :engine_version => "2.5.2"
+ruby "2.1.0", :engine => "rbx", :engine_version => "2.2.10"
