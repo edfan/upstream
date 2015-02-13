@@ -47,9 +47,10 @@ gem 'bootstrap3-datetimepicker-rails', '~> 3.1.3'
 
 gem "bugsnag"
 gem 'rails_12factor', group: :production
+gem 'statsmix'
 
 gem 'puma'
 
 gem 'delayed_job_active_record'
 
-ruby "2.1.0", :engine => "rbx", :engine_version => "2.2.10"
+ruby "2.1.4", :engine => "rbx", :engine_version => "2.5.2"
