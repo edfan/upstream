@@ -13,8 +13,8 @@
 <nav class="navbar navbar-inverse">
     <div class="container">
         <div class="col-md-3" id='topRow'>
-            <a class="navbar-brand" href="bootstrapsamp.html">
-                <img alt="Brand" src="/app/assets/images/logothumbnail.png">
+            <a class="navbar-brand" href="index.html">
+                <%= image_tag("logothumbnail.png", :alt => "Logo") %>
             </a>
             <h1>Upstream</h1>
         </div>
@@ -27,15 +27,20 @@
 </form>
         </div>
         <div class="col-md-1" id='topRow'>
-                    <a href="#" class="dropdown-toggle navbar-right" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <span class="caret"></span></a>
+            
+            <a href="#" class="dropdown-toggle navbar-right" data-toggle="dropdown" role="button" aria-expanded="false"><span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
+              <% if !@user %>
+            <li><a href="#">My Profile</a></li>
+            <li><a href="#">Manage Streams</a></li>
+            <li><a href="#">Add Stream</a></li>
             <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
+            <li><a href="#"><span class="text-danger"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout</span></a></li>
+              <% else %>
+            <li><a href="#"><span class="text-success"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Login</span></a></li>
+              <% end %>
           </ul>
-        </li>
+             <a href="#" class="navbar-link navbar-right"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
         </div>
     </div>
 </nav>
