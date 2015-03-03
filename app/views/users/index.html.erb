@@ -30,34 +30,6 @@
     </tr>
     <% end %>
   </table>
-    <form role="form">
-  <div class="form-group">
-    <label for="strmtitle">Stream Title</label>
-    <input type="text" id="strmstitle" name="strmtitle" class="form-control" />
-  </div>
-  <div class="form-group">
-    <label for="game">Game</label>
-    <input type="text" id="game" name="game" class="form-control" />
-  </div>
-  <div class="form-group">
-    <label for="description">Description</label>
-    <input type="text" id="description" name="description" class="form-control" />
-  </div>
-  <div class='input-group date' id='datetimepicker1'>
-      <label for="dttext">Date/Time</label>
-      <input type='text' id='dttext' class="form-control" />
-        <span class="input-group-addon"><span id="dt" name ="dt" class="glyphicon glyphicon-calendar"></span>
-        </span>
-  </div>
-        <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker1').datetimepicker();
-            });
-        </script>
-
-  <input type="submit" value="Save Changes" />
-  <input type="button" value="Cancel" />
-</form>
 </div>
 <br>
 <% if @scheduledStreams %>
