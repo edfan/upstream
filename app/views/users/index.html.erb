@@ -7,9 +7,11 @@
 <% end %>
 <br><br>
 
-<div id='TopStreams'>
+<center>
+<div class='container' id='TopStreams'>
+    <div class="jumbotron">
   <p style="text-decoration: underline">Streams live now</p>
-  <table id='TopStreamsTable'>
+  <table class='table table-bordered' id='TopStreamsTable'>
 
     <tr>
       <th>Streamer</th>
@@ -31,9 +33,11 @@
     <% end %>
   </table>
 </div>
+</div>
 <br>
 <% if @scheduledStreams %>
-<div id='NextStreams'>
+<div class='container' id='NextStreams'>
+    <div class="jumbotron">
   <p style="text-decoration: underline">Upcoming streams</p>
   <table id='NextStreamsTable'>
     <tr>
@@ -55,4 +59,6 @@
     <% end %>
   </table>
 </div>
+</div>
+    </center>
 <% end %>
