@@ -12,14 +12,17 @@
 
     <tr>
       <th>Start time</th>
+      <th>End time</th>
       <th>Title</th>
       <th>Game</th>
       <th>Full description</th>
     </tr>
-
+    
     <% @streams.each do |stream| %>
+
     <tr>
-      <td><%= stream.start.strftime("%b %d, %I:%M %p") %></td>
+      <td><%= stream.starttime.strftime("%b %d, %I:%M %p") %></td>
+      <td><%= stream.endtime.strftime("%b %d, %I:%M %p") %></td>
       <td><%= stream.title %></td>
       <td><%= stream.game %></td>
       <td><%= link_to "More...", user_stream_path(stream.user, stream) %></td>

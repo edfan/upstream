@@ -2,7 +2,8 @@
 
 <p>Streamer: <%= @user.name %></p>
 <p>Game: <%= @stream.game %></p>
-<p>Time: <%= @stream.start.strftime("%B %d, %I:%M %p") %></p>
+<p>Start time: <%= @stream.starttime.strftime("%B %d, %I:%M %p") %></p>
+<p>End time: <%= @stream.endtime.strftime("%B %d, %I:%M %p") %></p>
 <p>Description: <%= @stream.description %></p>
 
 <% if @user.name == session[:name] %>

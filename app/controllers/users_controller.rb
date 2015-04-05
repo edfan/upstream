@@ -51,7 +51,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @streams = Array(@user.streams.all)
-    @streams.sort_by! {|obj| obj.start}
+    @streams.sort_by! {|obj| obj.starttime}
 
     @twitch = Twitch.new
     @userStream = @twitch.getStream(@user.name)[:body]

@@ -38,6 +38,7 @@
   <table id='NextStreamsTable'>
     <tr>
       <th>Start time</th>
+      <th>End time</th>
       <th>Streamer</th>
       <th>Title</th>
       <th>Game</th>
@@ -46,7 +47,8 @@
 
     <% @scheduledStreams.each do |stream| %>
     <tr>
-      <td><%= stream.start.strftime("%b %d, %I:%M %p") %></td>
+      <td><%= stream.starttime.strftime("%b %d, %I:%M %p") %></td>
+      <td><%= stream.endtime.strftime("%b %d, %I:%M %p") %></td>
       <td><a href=" <%= user_path(stream.user) %>"><%= stream.user.name %></a></td>
       <td><%= stream.title %></td>
       <td><%= stream.game %></td>

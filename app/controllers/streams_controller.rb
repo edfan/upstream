@@ -9,6 +9,7 @@ class StreamsController < ApplicationController
     @user = User.find(params[:user_id])
     if params.has_key?(:stream)
       @stream = @user.streams.create(stream_params)
+      @stream.delay.deleteWhenFinished
       redirect_to user_stream_path(@user, @stream)
     else
       render 'new'
@@ -43,7 +44,7 @@ class StreamsController < ApplicationController
 
   private
   def stream_params
-    params.require(:stream).permit(:title, :game, :description, :start)
+    params.require(:stream).permit(:title, :game, :description, :starttime, :endtime)
   end
 
 end
