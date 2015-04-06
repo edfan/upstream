@@ -9,6 +9,11 @@ class StreamsController < ApplicationController
     @user = User.find(params[:user_id])
     if params.has_key?(:stream)
       @stream = @user.streams.create(stream_params)
+
+      @game = Game.find_by_id(@stream.game.to_i)
+      @stream.game = @game.name
+      @stream.save!
+
       @stream.delay.deleteWhenFinished
       redirect_to user_stream_path(@user, @stream)
     else

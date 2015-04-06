@@ -10,7 +10,8 @@
 
 <p>
   <%= f.label :game %><br>
-  <%= f.text_field :game %>
+  <%= f.hidden_field :game, class: 'select2 ajax', style: 'width: 20%',
+      data: { source: search_game_names_path, placeholder: 'Search for a game' } %>
 </p>
 
 <p>

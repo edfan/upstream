@@ -54,4 +54,7 @@ gem 'puma'
 gem 'delayed_job_active_record'
 gem 'daemons'
 
+gem 'select2-rails'
+gem 'kaminari'
+
 ruby "2.1.4"

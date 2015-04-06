@@ -1,0 +1,9 @@
+<table>
+
+  <% @games.each do |game| %>
+  <tr>
+    <td><a href="<%= game_path(game) %>"> <%= game.name %> </a></td>
+  </tr>
+  <% end %>
+
+</table>

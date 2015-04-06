@@ -14,9 +14,13 @@ Rails.application.routes.draw do
   get '/auth', :to => 'sessions#create'
   get '/auth/failure', :to => 'sessions#new'
 
+  get '/games/search/name', :to => 'games#search_for_name', :as => 'search_game_names'
+
   resources :users do
     resources :streams
   end
+
+  resources :games
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
