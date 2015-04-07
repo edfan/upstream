@@ -39,7 +39,7 @@ class UsersController < ApplicationController
         @scheduledStreams.concat(@dbstreamer.streams.all)
       end
 
-      @scheduledStreams.sort_by! {|obj| obj.start}
+      @scheduledStreams.sort_by! {|obj| obj.starttime}
 
     else
       @twitch = Twitch.new({})

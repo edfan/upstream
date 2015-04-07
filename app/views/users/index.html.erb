@@ -1,24 +1,9 @@
-<% if !@user %>
-<a href="/login">Log in</a>
-<% else %>
-<%= link_to "My streaming profile", user_path(@user) %><br>
-<a href="/update">Update followed streams</a><br>
-<a href="/logout">Log out</a>
-<% end %>
-<br><br>
-<%= link_to "All games", games_path %>
-<br><br>
-<%= form_tag search_path, :method => :get do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil %>
-  </p>
-<% end %>
-<br><br>
+<center>
 
-<div id='TopStreams'>
+    <div class="jumbotron">
+<div class='container' id='TopStreams'>
   <p style="text-decoration: underline">Streams live now</p>
-  <table id='TopStreamsTable'>
+  <table class='table table-bordered' id='TopStreamsTable'>
 
     <tr>
       <th>Streamer</th>
@@ -40,9 +25,11 @@
     <% end %>
   </table>
 </div>
+</div>
 <br>
 <% if @scheduledStreams %>
-<div id='NextStreams'>
+<div class="jumbotron">
+<div class='container' id='NextStreams'>
   <p style="text-decoration: underline">Upcoming streams</p>
   <table id='NextStreamsTable'>
     <tr>
@@ -66,4 +53,6 @@
     <% end %>
   </table>
 </div>
+</div>
 <% end %>
+</center>
