@@ -57,4 +57,7 @@ gem 'daemons'
 gem 'select2-rails'
 gem 'kaminari'
 
+gem 'sunspot_rails'
+gem 'sunspot_solr'
+
 ruby "2.1.4"

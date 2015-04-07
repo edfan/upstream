@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get '/auth/failure', :to => 'sessions#new'
 
   get '/games/search/name', :to => 'games#search_for_name', :as => 'search_game_names'
+  get '/search', :to => 'users#search', :as => 'search'
 
   resources :users do
     resources :streams

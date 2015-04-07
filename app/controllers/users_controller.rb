@@ -76,7 +76,23 @@ class UsersController < ApplicationController
 
     @user.save
     redirect_to action: 'index'
+  end
 
+  def search
+    @searchUsers = User.search do
+      fulltext params[:search]
+    end
+    @users = @searchUsers.results
+
+    @searchGames = Game.search do
+      fulltext params[:search]
+    end
+    @games = @searchGames.results
+
+    @searchStreams = Stream.search do
+      fulltext params[:search]
+    end
+    @streams = @searchStreams.results
   end
 
 end

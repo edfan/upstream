@@ -8,6 +8,13 @@
 <br><br>
 <%= link_to "All games", games_path %>
 <br><br>
+<%= form_tag search_path, :method => :get do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+<br><br>
 
 <div id='TopStreams'>
   <p style="text-decoration: underline">Streams live now</p>
