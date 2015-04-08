@@ -36,23 +36,40 @@
         <% else %>
         <% @user = User.find_by_name(session[:name]) %>
         <li><a href=" <%= user_path(@user) %> ">My Profile</a></li>
-        <li><a href="/update">Update Followed Streams</a></li>
+        <li><a href="/update">Update Streams</a></li>
         <li><a href="/games">All Games</a></li>
         <li><a href=" <%= new_user_stream_path(@user) %> ">Add Stream</a></li>
         <li class="divider"></li>
         <li><a href="/logout"><span class="text-danger"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout</span></a></li>
         <% end %>
       </ul>
-      <button href="#" class="btn btn-default navbar-btn navbar-right"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></button>
+        <% if session[:name] != nil %>
+        <% @user = User.find_by_name(session[:name]) %>
+      <button href="<%= user_path(@user) %>" class="btn btn-default navbar-btn navbar-right"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></button>
+        <% end %>
     </div>
   </div>
 </nav>
 <body>
 
-  <% if session[:name] %>
-  <p>Logged in as <%= session[:name] %></p>
-  <% end %>
   <%= yield %>
 
+    
+    <div class="navbar-collapse navbar-center collapse" id="botRow">
+            <div class="container-fluid">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Terms &amp; Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+            </div>
+    <p><center>© 2015 Upstream inc.</center></p>
 </body>
 </html>
