@@ -35,11 +35,44 @@ button[type=button] {
   }
 }
 
-#TopBar {
-  background-color: #111111;
-  margin-top: -1.5%;
+#topRow h1{
+    font-family: Karla, sans-serif;
 }
 
+#topRow .navbar-brand{
+    margin-top: auto;
+}
+
+#topRow h1{
+    margin-top: 5%;
+    color: #B3FFBC;
+}
+
+#topRow .navbar-form{
+    margin-top: 2.2%;
+}
+
+#topRow .navbar-btn{
+    margin-top: 24%;
+}
+
+#topRow .caret {
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid #a5adb0;
+}
+
+#topRow .dropdown-toggle{
+    margin-top: 30%;
+}
+
+#botRow .nav{
+    text-align: center;
+}
+
+.navbar-inverse{
+    background-color: #0E55A0;
+}
 
 #Logo h1 {
   text-align: center;

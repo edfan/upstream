@@ -1,4 +1,4 @@
-CLIENT_ID = "flz2nj3mgm3ln8w7h40bexemyug33d8"
-SECRET_KEY = "pgx7bf511zkl47nlh8h0qqmtietv9u0"
-REDIRECT_URI = "http://twitch-upstream.herokuapp.com/auth/"
+CLIENT_ID = "nrjg1qo93yoz5a5unfxkyit810u794a"
+SECRET_KEY = "p9i50l9uqci72z1ffx4f8gtdiv25x89"
+REDIRECT_URI = "http://localhost:3000/auth/"
 SCOPES = ["user_read"]
