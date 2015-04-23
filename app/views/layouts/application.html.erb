@@ -44,8 +44,8 @@
         <% end %>
       </ul>
         <% if session[:name] != nil %>
-        <% @user = User.find_by_name(session[:name]) %>
-      <button href="<%= user_path(@user) %>" class="btn btn-default navbar-btn navbar-right"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></button>
+        <% @user = User.find_by_name(session[:name]) %><a href="<%= user_path(@user) %>">
+        <button class="btn btn-default navbar-btn navbar-right"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></button>
         <% end %>
     </div>
   </div>
