@@ -5,8 +5,6 @@
 @import "bootstrap-sprockets";
 @import 'bootstrap';
 @import 'bootstrap-datetimepicker';
-
-
 /* Color Palate
 -6441a5 -Med Purp
 -5930a6 -Dark Purp
@@ -17,47 +15,29 @@
 -666666 -Dark Gray
 */
 
-
 body {
-  background-color: #CCCCCC;
-  font-family: Helvetica Neue;
+    background-color: #CCCCCC;
+    font-family: Helvetica Neue;
 }
 
-
-button[type=button] {
-  background: #6441a5;
-  color: white;
-  width: 288px;
-  height: 48px;
-  font-size: 24px;
-  border: 0;
-  cursor: pointer;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 6px;
-  &:hover {
-    background: #5930a6;
-  }
-}
-
-#topRow h1{
+#topRow h1 {
     font-family: Open Sans, sans-serif;
 }
 
-#topRow .navbar-brand{
+#topRow .navbar-brand {
     margin-top: auto;
 }
 
-#topRow h1{
+#topRow h1 {
     margin-top: 5%;
     color: #FFFFFF;
 }
 
-#topRow .navbar-form{
+#topRow .navbar-form {
     margin-top: 2.2%;
 }
 
-#topRow .navbar-btn{
+#topRow .navbar-btn {
     margin-top: 24%;
 }
 
@@ -67,126 +47,126 @@ button[type=button] {
     border-top: 4px solid #a5adb0;
 }
 
-#topRow .dropdown-toggle{
+#topRow .dropdown-toggle {
     margin-top: 30%;
 }
 
-.navbar-inverse{
+.navbar-inverse {
     background-color: #083C73;
 }
 
 #Logo h1 {
-  text-align: center;
-  margin-left: 1%;
-  font-family: Open Sans;
-  font-size: 36px;
-  color: #eeeeee;
-  margin-bottom: 12px;
+    text-align: center;
+    margin-left: 1%;
+    font-family: Open Sans;
+    font-size: 36px;
+    color: #eeeeee;
+    margin-bottom: 12px;
 }
 
 #Logo a:link {
-  color: #eeeeee;
-  text-decoration: none;
+    color: #eeeeee;
+    text-decoration: none;
 }
 
 #Logo a:visited {
-  color: #eeeeee;
-  text-decoration: none;
+    color: #eeeeee;
+    text-decoration: none;
 }
 
 #Logo a:hover {
-  color: #bbbbbb;
-  text-decoration: none;
+    color: #bbbbbb;
+    text-decoration: none;
 }
 
 #Logo a:active {
-  color: #ffffff;
-  text-decoration: none;
+    color: #ffffff;
+    text-decoration: none;
 }
 
 #LoginBox {
-  background-color: #999999;
-  margin-bottom: 12px;
-  height: 288px;
+    background-color: #999999;
+    margin-bottom: 12px;
+    height: 288px;
 }
 
 #TopStreams {
-  float: center;
+    float: center;
 }
 
 #TopStreamsTable {
-  float: center;
-  width: 60%
+    float: center;
+    width: 60%;
 }
 
 #TopStreamsTable td {
-  width: 20%
+    width: 20%;
 }
 
 #NextStreams {
-  float: center;
+    float: center;
 }
 
 #NextStreamsTable {
-  float: center;
-  width: 90%
+    float: center;
+    width: 90%;
 }
 
 #NextStreamsTable td {
-  width: 15%
+    width: 15%;
 }
 
 #UserStreams {
-  float: center;
+    float: center;
 }
 
 #UserStreamsTable {
-  float: center;
-  width: 40%
+    float: center;
+    width: 100%;
 }
 
 #UserStreamsTable td {
-  width: 25%
+    width: 25%;
 }
 
 #RightShift {
-  float: right;
-  margin-bottom: 12px;
+    float: right;
+    margin-bottom: 12px;
 }
 
 #LoginButton {
-  float: right;
-  margin-right: 60%;
-  margin-top: 40%;
+    float: right;
+    margin-right: 60%;
+    margin-top: 40%;
 }
 
 #BotBar {
-  background-color: #333333;
+    background-color: #333333;
 }
 
 #BotBarText {
-  float: none;
-  margin-top: auto;
-  color: #6F51A6;
-  font-weight: normal;
-  font-size: 12px;
-  text-align: center;
+    float: none;
+    margin-top: auto;
+    color: #6F51A6;
+    font-weight: normal;
+    font-size: 12px;
+    text-align: center;
 }
 
 #MidFrame {
-  background-color: #999999;
-  height: 288px;
-  margin-top: -4.6%;
+    background-color: #999999;
+    height: 288px;
+    margin-top: -4.6%;
 }
 
 #ProfileName p {
-  text-decoration: underline;
-  text-align: center;
-  font-size: 72px;
-  margin-bottom: 24px;
+    text-decoration: underline;
+    text-align: center;
+    font-size: 72px;
+    margin-bottom: 24px;
 }
 
 #ViewSelection {
-  width: 80%;
-  margin-left: 15%;
+    width: 80%;
+    margin-left: 15%;
 }
