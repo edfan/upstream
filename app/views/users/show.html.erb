@@ -19,19 +19,27 @@
 <% end %>
 
 <script type="text/javascript">
-    var frames = ["List", "Calendar", "Following", "Followers", "Settings"];
-    function swapFrame(this,frm) {
+    var frames;
+    
+    $(document).ready(function () {
+        frames = ["List", "Calendar", "Following", "Followers", "Settings"];
+        for(j = 0; j < frames.length; j++){
+            $("#"+frames[j]).hide();
+        }
+        $("#"+frames[0]).show();
+    });
+    
+    function swapFrame(butan,frm) {
+        for(j = 0; j < frames.length; j++){
+            $("#"+frames[j]).hide();
+            $("#b"+j).attr("class", "btn btn-primary inactive");
+        }
         for(i = 0; i < frames.length; i++){
             if(i == frm){
-                $.("#"+frames[frm]).show();
-                this.attr("class", "btn btn-primary active")
-            }
-            else{
-                $.("#"+frames[i]).hide();
-                $.("#b"+i).attr("class", "btn btn-primary inactive");
+                $("#"+frames[i]).show();
+                butan.attr("class", "btn btn-primary active");
             }
         }
-        
     }
 </script>
 
@@ -41,11 +49,11 @@
         <br>
         <br>
         <div class="btn-group-vertical" width="100%" role="group">
-            <a href="#" type="button" id="b0" class="btn btn-primary active" onclick="swapFrame(0)">List</a>
-            <a href="#" type="button" id="b1" class="btn btn-primary inactive" onclick="swapFrame(1)">Calendar</a>
-            <a href="#" type="button" id="b2" class="btn btn-primary inactive" onclick="swapFrame(2)">Following</a>
-            <a href="#" type="button" id="b3" class="btn btn-primary inactive" onclick="swapFrame(3)">Followers</a>
-            <a href="#" type="button" id="b4" class="btn btn-primary inactive" onclick="swapFrame(4)">Settings</a>
+            <button id="b0" class="btn btn-primary active" onclick="swapFrame(this, 0)">List</button>
+            <button id="b1" class="btn btn-primary inactive" onclick="swapFrame(this, 1)">Calendar</button>
+            <button id="b2" class="btn btn-primary inactive" onclick="swapFrame(this, 2)">Following</button>
+            <button id="b3" class="btn btn-primary inactive" onclick="swapFrame(this, 3)">Followers</button>
+            <button id="b4" class="btn btn-primary inactive" onclick="swapFrame(this, 4)">Settings</button>
         </div>
         
     </div>
@@ -54,7 +62,6 @@
     <div class="col-md-8" id='midJumbo'>
         
         <div id="List">
-        
 <div id='UserStreams'>
   <p style="text-decoration: underline">Upcoming streams</p>
     
@@ -80,6 +87,22 @@
   </table>
 </div>
     </div>
+        
+        <div id="Calendar">
+            Cal
+        </div>
+        
+        <div id="Following">
+              Flg  
+        </div>
+        
+        <div id="Followers">
+                Flr
+        </div>
+        
+        <div id="Settings">
+                Stg
+        </div>
         
         </div>
             <div class="col-md-2" id='midJumbo'></div>
