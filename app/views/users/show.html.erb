@@ -37,7 +37,7 @@
         for(i = 0; i < frames.length; i++){
             if(i == frm){
                 $("#"+frames[i]).show();
-                butan.attr("class", "btn btn-primary active");
+                $("#b"+i).attr("class", "btn btn-primary active");
             }
         }
     }
@@ -63,7 +63,7 @@
         
         <div id="List">
 <div id='UserStreams'>
-  <p style="text-decoration: underline">Upcoming streams</p>
+  <p style="text-decoration: underline">Your Scheduled Streams</p>
     
   <table class='table table-bordered' id='UserStreamsTable'>
     <tr>
@@ -89,19 +89,53 @@
     </div>
         
         <div id="Calendar">
-            Cal
+            <p style="text-decoration: underline">Your Scheduled Streams</p>
         </div>
         
         <div id="Following">
-              Flg  
+            <p style="text-decoration: underline">Following</p>
+              <table class='table table-striped' id='UserStreamsTable'>
+                <tr>
+                  <th>Icon</th>
+                  <th>Follower</th>
+                  <th>Follow</th>
+                  <th>Delete</th>
+                </tr>
+    
+                <% @user.follows.each do |channel| %>
+
+                <tr>
+                  <td>icon</td>
+                  <td><%= channel["channel"]["display_name"] %></td>
+                  <td>follow button</td>
+                  <td>delete button</td>
+                </tr>
+                <% end %>
+              </table>
         </div>
         
         <div id="Followers">
-                Flr
+            <p style="text-decoration: underline">Followers</p>
+            <table class='table table-striped' id='UserStreamsTable'>
+                <tr>
+                  <th>Icon</th>
+                  <th>Following</th>
+                  <th>Delete</th>
+                </tr>
+    
+                <% @user.follows.each do |channel| %>
+
+                <tr>
+                  <td>icon</td>
+                  <td><%= channel["channel"]["display_name"] %></td>
+                  <td>unsub</td>
+                </tr>
+                <% end %>
+              </table>
         </div>
         
         <div id="Settings">
-                Stg
+            <p style="text-decoration: underline">Settings</p>
         </div>
         
         </div>
