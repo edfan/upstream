@@ -14,11 +14,14 @@ Rails.application.routes.draw do
   get '/auth', :to => 'sessions#create'
   get '/auth/failure', :to => 'sessions#new'
 
+  get '/auth/twitter/callback', :to => 'users#addTwitter'
+
   get '/games/search/name', :to => 'games#search_for_name', :as => 'search_game_names'
   get '/search', :to => 'users#search', :as => 'search'
 
   resources :users do
     resources :streams
+    resources :weekly_streams
   end
 
   resources :games

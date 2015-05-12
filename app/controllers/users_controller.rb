@@ -53,8 +53,20 @@ class UsersController < ApplicationController
     @streams = Array(@user.streams.all)
     @streams.sort_by! {|obj| obj.starttime}
 
+    @weeklyStreams = Array(@user.weekly_streams.all)
+
     @twitch = Twitch.new
+    @tuser = @twitch.getUser(@user.name)
+    @logo = @tuser[:body]["logo"]
+    @description = @tuser[:body]["bio"]
+
+    @following = @twitch.getAllFollows(@user.name)[:body]["follows"]
+    @followers = @twitch.getAllFollowing(@user.name)[:body]["follows"]
+
+    puts(@following, @followers)
+
     @userStream = @twitch.getStream(@user.name)[:body]
+
   end
 
   def updateFollows
@@ -93,6 +105,18 @@ class UsersController < ApplicationController
       fulltext params[:search]
     end
     @streams = @searchStreams.results
+  end
+
+  def addTwitter
+    @user = User.find_by_name(session[:name])
+    auth = request.env["omniauth.auth"]
+
+    @user.token = auth[:credentials][:token]
+    @user.secret = auth[:credentials][:secret]
+
+    @user.save!
+
+    redirect_to user_path(@user)
   end
 
 end

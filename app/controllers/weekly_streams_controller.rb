@@ -1,41 +1,39 @@
-class StreamsController < ApplicationController
+class WeeklyStreamsController < ApplicationController
 
   def new
     @user = User.find(params[:user_id])
-    @stream = Stream.new
+    @stream = WeeklyStream.new
   end
 
   def create
     @user = User.find(params[:user_id])
-    if params.has_key?(:stream)
-      @stream = @user.streams.create(stream_params)
+    if params.has_key?(:weekly_stream)
+      @stream = @user.weekly_streams.create(weekly_stream_params)
 
       @game = Game.find_by_id(@stream.game.to_i)
       @stream.game = @game.name
       @stream.save!
 
-      @stream.delay.deleteWhenFinished
-      if @stream.tweet != nil
-        @stream.delay.tweetAtStart
-      end
-      redirect_to user_stream_path(@user, @stream)
+      @stream.weeklyCreate
+
+      redirect_to user_weekly_stream_path(@user, @stream)
     else
       render 'new'
     end
   end
 
   def show
-    @stream = Stream.find(params[:id])
+    @stream = WeeklyStream.find(params[:id])
     @user = User.find(@stream.user_id)
   end
 
   def edit
-    @stream = Stream.find(params[:id])
+    @stream = WeeklyStream.find(params[:id])
     @user = User.find(@stream.user_id)
   end
 
   def update
-    @stream = Stream.find(params[:id])
+    @stream = WeeklyStream.find(params[:id])
     @user = User.find(@stream.user_id)
 
     @stream.update(stream_params)
@@ -43,16 +41,18 @@ class StreamsController < ApplicationController
   end
 
   def destroy
-    @stream = Stream.find(params[:id])
+    @stream = WeeklyStream.find(params[:id])
     @user = User.find(@stream.user_id)
     @stream.destroy
 
     redirect_to url_for(@user)
   end
 
+
   private
-  def stream_params
-    params.require(:stream).permit(:description, :tweet, :title, :game, :starttime, :endtime)
+  def weekly_stream_params
+    params.require(:weekly_stream).permit(:description, :title, :game, :starttime, :endtime, :day, :tweet)
   end
+
 
 end

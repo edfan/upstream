@@ -1,6 +1,6 @@
-<h3>New Scheduled Stream</h3>
+<h3>New Scheduled Weekly Stream</h3>
 
-<%= form_for ([@user, @user.streams.build]) do |f| %>
+<%= form_for ([@user, @user.weekly_streams.build]) do |f| %>
 
 
 <p>
@@ -20,20 +20,19 @@
 </p>
 
 <p>
+  <%= f.label :day %><br>
+  <%= f.text_field :day %>
+</p>
+
+<p>
   <%= f.label "Start time" %><br>
-  <%= f.datetime_select :starttime %>
+  <%= f.time_select :starttime %>
 </p>
 
 <p>
   <%= f.label "End time" %><br>
-  <%= f.datetime_select :endtime %>
+  <%= f.time_select :endtime %>
 </p>
-
-<p>
-  <%= f.label "Tweet text" %><br>
-  <%= f.text_area :tweet %>
-</p>
-
 
 <p>
   <%= f.submit %>

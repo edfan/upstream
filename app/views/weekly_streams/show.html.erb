@@ -2,14 +2,15 @@
 
 <p>Streamer: <%= @user.name %></p>
 <p>Game: <%= @stream.game %></p>
-<p>Start time: <%= @stream.starttime.strftime("%B %d, %I:%M %p") %></p>
-<p>End time: <%= @stream.endtime.strftime("%B %d, %I:%M %p") %></p>
+<p>Day: <%= @stream.day %></p>
+<p>Start time: <%= @stream.starttime.to_s(:time) %></p>
+<p>End time: <%= @stream.endtime.to_s(:time) %></p>
 <p>Description: <%= @stream.description %></p>
-<p>Tweet: <%= @stream.tweet %></p>
 
 <% if @user.name == session[:name] %>
-<%= link_to "Edit stream", edit_user_stream_path(@user, @stream) %> |
+<%= link_to "Edit stream", edit_user_weekly_stream_path(@user, @stream) %> |
 <%= link_to "Delete stream", [@user, @stream], :method => :delete %>
 <% end %>
 <br>
+
 <%= link_to "Back", user_path(@user) %>

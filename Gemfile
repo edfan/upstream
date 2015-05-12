@@ -38,7 +38,7 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'twitch', '>= 0.0.5', :git => "https://github.com/Techonup/twitch-rb.git"
+gem 'twitch', '>= 0.0.6', :git => "https://github.com/Techonup/twitch-rb.git"
 
 gem 'bootstrap-sass', '~> 3.3.1'
 gem 'autoprefixer-rails'
@@ -59,5 +59,11 @@ gem 'kaminari'
 
 gem 'sunspot_rails'
 gem 'sunspot_solr'
+
+gem 'twitter'
+gem 'omniauth-twitter'
+
+gem 'chronic'
+gem 'clockwork'
 
 ruby "2.1.4"

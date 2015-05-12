@@ -11,13 +11,13 @@
   <%= csrf_meta_tags %>
 </head>
 
+<body>
 <nav class="navbar navbar-inverse">
   <div class="container">
     <div class="col-md-3" id='topRow'>
-      <a class="navbar-brand" href="/">
-        <%= image_tag("logothumbnail.png", :alt => "Logo") %>
-      </a>
-      <h1>Upstream</h1>
+      <!--a class="navbar-brand" href="/">
+      </a-->
+        <h1><a href="/" style="text-decoration: none; color: inherit">Upstream</a></h1>
     </div>
     <div class="col-md-8" id='topRow'>
       <form class="navbar-form navbar-right" action="/search" method="get" role="search">
@@ -30,6 +30,7 @@
     <div class="col-md-1" id='topRow'>
 
       <a href="#" class="dropdown-toggle navbar-right" data-toggle="dropdown" role="button" aria-expanded="false"><span class="caret"></span></a>
+
       <ul class="dropdown-menu" role="menu">
         <% if session[:name] == nil %>
         <li><a href="/login"><span class="text-success"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Login</span></a></li>
@@ -39,37 +40,43 @@
         <li><a href="/update">Update Streams</a></li>
         <li><a href="/games">All Games</a></li>
         <li><a href=" <%= new_user_stream_path(@user) %> ">Add Stream</a></li>
+        <li><a href=" <%= new_user_weekly_stream_path(@user) %> ">Add Weekly Stream</a></li>
+        <li><a href="/auth/twitter">Add/Update Twitter</a></li>
         <li class="divider"></li>
         <li><a href="/logout"><span class="text-danger"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout</span></a></li>
         <% end %>
       </ul>
+
         <% if session[:name] != nil %>
         <% @user = User.find_by_name(session[:name]) %>
       <button href="<%= user_path(@user) %>" class="btn btn-default navbar-btn navbar-right"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></button>
         <% end %>
+
+
+        <% if @user.name == session[:name] %>
+        <%= link_to "<button class=\"btn btn-default navbar-btn navbar-right\"><span class=\"glyphicon glyphicon-plus\" aria-hidden=\"true\"></span></button>".html_safe, new_user_stream_path(@user) %>
+        <% end %>
     </div>
   </div>
 </nav>
-<body>
 
   <%= yield %>
 
-    
-    <div class="navbar-collapse navbar-center collapse" id="botRow">
-            <div class="container-fluid">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                <ul class="nav navbar-nav">
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Terms &amp; Conditions</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                </ul>
-                </div>
-                <div class="col-md-3"></div>
-            </div>
-            </div>
-    <p><center>© 2015 Upstream inc.</center></p>
+<!--
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="col-md-6">
+        <ul class="nav navbar-nav">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Terms &amp; Conditions</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+-->
+    <center><p>© 2015 Upstream Inc.</p></center>
 </body>
 </html>
