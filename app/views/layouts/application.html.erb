@@ -18,6 +18,11 @@
       <!--a class="navbar-brand" href="/">
       </a-->
         <h1><a href="/" style="text-decoration: none; color: inherit">Upstream</a></h1>
+         <% if session[:name] == nil %>
+        <h1 href="/update">Upstream</h1>
+        <% else %>
+        <h1>Upstream</h1>
+        <% end %>
     </div>
     <div class="col-md-8" id='topRow'>
       <form class="navbar-form navbar-right" action="/search" method="get" role="search">
@@ -30,7 +35,6 @@
     <div class="col-md-1" id='topRow'>
 
       <a href="#" class="dropdown-toggle navbar-right" data-toggle="dropdown" role="button" aria-expanded="false"><span class="caret"></span></a>
-
       <ul class="dropdown-menu" role="menu">
         <% if session[:name] == nil %>
         <li><a href="/login"><span class="text-success"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Login</span></a></li>
