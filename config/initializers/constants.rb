@@ -1,7 +1,7 @@
-CLIENT_ID = "nrjg1qo93yoz5a5unfxkyit810u794a"
-SECRET_KEY = "s1bwwdgytzaoq560pmmehwr9xnmqiuz"
-REDIRECT_URI = "http://localhost:3000/auth/"
+CLIENT_ID = "flz2nj3mgm3ln8w7h40bexemyug33d8"
+SECRET_KEY = "dfsmt6pwftqjz3n2z3how1cjwuf8lr7"
+REDIRECT_URI = "http://twitch-upstream.herokuapp.com/auth/"
 SCOPES = ["user_read"]
 
-TWITTER_KEY = "Fi6SoKuqb3JLwMU9se5U84NTO"
-TWITTER_SECRET = "4oVtLIpjbefBs8iPaSQ0eRHKCfITuW0Qh4ppBEkQOQR5wk6e44"
+TWITTER_KEY = "vs0u6msyuu4Nby7vaYiRu6ABJ"
+TWITTER_SECRET = "5HI8O9uFznuD0XFz7NOHOrUBoSbeT6sZZeCwFPUVc1AX6BoZ5z"
