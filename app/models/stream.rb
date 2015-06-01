@@ -1,10 +1,12 @@
 class Stream < ActiveRecord::Base
   belongs_to :user
 
+=begin
   searchable do
     text :title, :game, :description
     time :starttime
   end
+=end
 
   def deleteWhenFinished
     self.destroy
