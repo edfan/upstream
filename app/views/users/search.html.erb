@@ -1,0 +1,26 @@
+<% if @users != [] %>
+<h3>Users</h3>
+<table>
+<% @users.each do |user| %>
+<tr><td><a href=" <%= user_path(user) %>"><%= user.name %></a></td></tr>
+<% end %>
+</table>
+<% end %>
+
+<% if @games != [] %>
+<h3>Games</h3>
+<table>
+<% @games.each do |game| %>
+<tr><td><a href=" <%= game_path(game) %>"><%= game.name %></a></td></tr>
+<% end %>
+</table>
+<% end %>
+
+<% if @streams != [] %>
+<h3>Streams</h3>
+<table>
+<% @streams.each do |stream| %>
+<tr><td><a href=" <%= user_stream_path(stream.user, stream) %>"><%= stream.title %></a></td></tr>
+<% end %>
+</table>
+<% end %>

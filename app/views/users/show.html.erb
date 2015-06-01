@@ -1,33 +1,187 @@
-<h3><%= @user.name %></h3>
+<center>
+<div class="media">
+  <div class="media-left">
+    <a href="#">
+      <img class="media-object" src="<%= @logo %>" alt="Profile picture" height=60 width=60>
+    </a>
+  </div>
+  <div class="media-body">
+      <h2 class="media-heading" onclick="location.href='http://www.twitch.tv/<%= @user.name %>'"><%= @user.name %></h2>
+    <p><%= @description %></p>
+  </div>
+    <br >
+</div>
 
-<% if !@userStream["stream"]%>
-  <p><a href="http://www.twitch.tv/<%= @user.name %> " target = "_blank">Twitch stream (offline)</a></p>
-<% else %>
+
+<% if @userStream["stream"]%>
   <iframe height="378" width="620" frameborder="0" scrolling="no" src="http://www.twitch.tv/<%= @user.name %>/embed"></iframe>
 <% end %>
+</center>
+<script type="text/javascript">
+    var frames;
 
+    $(document).ready(function () {
+        frames = ["List", "Calendar", "Following", "Followers", "Settings"];
+        for(j = 0; j < frames.length; j++){
+            $("#"+frames[j]).hide();
+        }
+        $("#"+frames[0]).show();
+    });
+
+    function swapFrame(butan,frm) {
+        for(j = 0; j < frames.length; j++){
+            $("#"+frames[j]).hide();
+            $("#b"+j).attr("class", "btn btn-primary inactive");
+        }
+        for(i = 0; i < frames.length; i++){
+            if(i == frm){
+                $("#"+frames[i]).show();
+                $("#b"+i).attr("class", "btn btn-primary active");
+            }
+        }
+    }
+</script>
+
+<script type="text/javascript">
+    var frames;
+
+    $(document).ready(function () {
+        frames = ["List", "Calendar", "Following", "Followers", "Settings"];
+        for(j = 0; j < frames.length; j++){
+            $("#"+frames[j]).hide();
+        }
+        $("#"+frames[0]).show();
+    });
+
+    function swapFrame(butan,frm) {
+        for(j = 0; j < frames.length; j++){
+            $("#"+frames[j]).hide();
+            $("#b"+j).attr("class", "btn btn-primary inactive");
+        }
+        for(i = 0; i < frames.length; i++){
+            if(i == frm){
+                $("#"+frames[i]).show();
+                $("#b"+i).attr("class", "btn btn-primary active");
+            }
+        }
+    }
+</script>
+
+<div class='jumbotron'>
+    <div class="container-fluid">
+    <div class="col-md-1" id='midJumbo'>
+        <br>
+        <br>
+        <div class="btn-group-vertical" width="100%" role="group">
+            <button id="b0" class="btn btn-primary active" onclick="swapFrame(this, 0)">List</button>
+            <button id="b1" class="btn btn-primary inactive" onclick="swapFrame(this, 1)">Calendar</button>
+            <button id="b2" class="btn btn-primary inactive" onclick="swapFrame(this, 2)">Following</button>
+            <button id="b3" class="btn btn-primary inactive" onclick="swapFrame(this, 3)">Followers</button>
+            <button id="b4" class="btn btn-primary inactive" onclick="swapFrame(this, 4)">Settings</button>
+        </div>
+    </div>
+        <div class="col-md-1" id='midJumbo'></div>
+        <center>
+    <div class="col-md-8" id='midJumbo'>
+
+        <div id="List">
 <div id='UserStreams'>
-  <p style="text-decoration: underline">Upcoming streams</p>
-  <table id='UserStreamsTable'>
+  <p style="text-decoration: underline">Scheduled Streams</p>
 
+
+  <table class='table table-bordered' id='UserStreamsTable'>
     <tr>
       <th>Start time</th>
+      <th>End time</th>
       <th>Title</th>
       <th>Game</th>
-      <th>Full description</th>
+      <th>Description</th>
     </tr>
 
     <% @streams.each do |stream| %>
+
     <tr>
-      <td><%= stream.start.strftime("%b %d, %I:%M %p") %></td>
+      <td><%= stream.starttime.strftime("%b %d, %I:%M %p") %></td>
+      <td><%= stream.endtime.strftime("%b %d, %I:%M %p") %></td>
       <td><%= stream.title %></td>
       <td><%= stream.game %></td>
       <td><%= link_to "More...", user_stream_path(stream.user, stream) %></td>
     </tr>
     <% end %>
   </table>
+
+  <p style="text-decoration: underline">Weekly Scheduled Streams</p>
+
+  <table class='table table-bordered' id='UserStreamsTable'>
+    <tr>
+      <th>Day</th>
+      <th>Start time</th>
+      <th>End time</th>
+      <th>Title</th>
+      <th>Game</th>
+      <th>Description</th>
+    </tr>
+
+    <% @weeklyStreams.each do |stream| %>
+
+    <tr>
+      <td><%= stream.day %> </td>
+      <td><%= stream.starttime.to_s(:time) %></td>
+      <td><%= stream.endtime.to_s(:time) %></td>
+      <td><%= stream.title %></td>
+      <td><%= stream.game %></td>
+      <td><%= link_to "More...", user_weekly_stream_path(stream.user, stream) %></td>
+    </tr>
+    <% end %>
+  </table>
 </div>
-<br><br>
-<% if @user.name == session[:name] %>
-<%= link_to "New scheduled stream", new_user_stream_path(@user) %>
-<% end %>
+    </div>
+
+        <div id="Calendar">
+            <p style="text-decoration: underline">Scheduled Streams</p>
+        </div>
+
+        <div id="Following">
+            <p style="text-decoration: underline">Following</p>
+              <table class='table table-striped' id='UserStreamsTable'>
+                <tr>
+                  <th>Icon</th>
+                  <th>User</th>
+                </tr>
+                <% @following.each do |follow| %>
+                <tr>
+                  <td><img src="<%= follow["channel"]["logo"] %>" height=40 width=40 ></td>
+                  <td><%= follow["channel"]["name"] %></td>
+                </tr>
+                <% end %>
+
+              </table>
+        </div>
+
+        <div id="Followers">
+            <p style="text-decoration: underline">Followers</p>
+            <table class='table table-striped' id='UserStreamsTable'>
+                <tr>
+                  <th>Icon</th>
+                  <th>User</th>
+                </tr>
+
+                <% @followers.each do |follow| %>
+                <tr>
+                  <td><img src="<%= follow["user"]["logo"] %>" height=40 width=40 ></td>
+                  <td><%= follow["user"]["name"] %></td>
+                </tr>
+                <% end %>
+              </table>
+        </div>
+
+
+        <div id="Settings">
+            <p style="text-decoration: underline">Settings</p>
+        </div>
+
+        </div>
+            <div class="col-md-2" id='midJumbo'></div>
+    </div>
+</div>
+    </center>

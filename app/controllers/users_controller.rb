@@ -39,7 +39,7 @@ class UsersController < ApplicationController
         @scheduledStreams.concat(@dbstreamer.streams.all)
       end
 
-      @scheduledStreams.sort_by! {|obj| obj.start}
+      @scheduledStreams.sort_by! {|obj| obj.starttime}
 
     else
       @twitch = Twitch.new({})
@@ -51,10 +51,22 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @streams = Array(@user.streams.all)
-    @streams.sort_by! {|obj| obj.start}
+    @streams.sort_by! {|obj| obj.starttime}
+
+    @weeklyStreams = Array(@user.weekly_streams.all)
 
     @twitch = Twitch.new
+    @tuser = @twitch.getUser(@user.name)
+    @logo = @tuser[:body]["logo"]
+    @description = @tuser[:body]["bio"]
+
+    @following = @twitch.getAllFollows(@user.name)[:body]["follows"]
+    @followers = @twitch.getAllFollowing(@user.name)[:body]["follows"]
+
+    puts(@following, @followers)
+
     @userStream = @twitch.getStream(@user.name)[:body]
+
   end
 
   def updateFollows
@@ -76,18 +88,35 @@ class UsersController < ApplicationController
 
     @user.save
     redirect_to action: 'index'
-
   end
 
-  def userAdmin
-    puts(params[:name])
-    if session[:name] == "isspkmn"
-      session[:name] = params[:name]
-      @user = User.new
-      @user.name = session[:name]
-      @user.follows = ["isspkmn"]
-      @user.save
+  def search
+    @searchUsers = User.search do
+      fulltext params[:search]
     end
-    redirect_to action: 'index'
+    @users = @searchUsers.results
+
+    @searchGames = Game.search do
+      fulltext params[:search]
+    end
+    @games = @searchGames.results
+
+    @searchStreams = Stream.search do
+      fulltext params[:search]
+    end
+    @streams = @searchStreams.results
   end
+
+  def addTwitter
+    @user = User.find_by_name(session[:name])
+    auth = request.env["omniauth.auth"]
+
+    @user.token = auth[:credentials][:token]
+    @user.secret = auth[:credentials][:secret]
+
+    @user.save!
+
+    redirect_to user_path(@user)
+  end
+
 end

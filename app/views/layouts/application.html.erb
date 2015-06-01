@@ -2,6 +2,7 @@
 <html>
 <head>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Karla:700' rel='stylesheet' type='text/css'>
 
   <title>Upstream</title>
 
@@ -9,17 +10,73 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
-  <div id='TopBar'>
-    <div id='Logo'>
-      <h1><a href='/'>upstream</a></h1>
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <div class="col-md-3" id='topRow'>
+      <!--a class="navbar-brand" href="/">
+      </a-->
+        <h1><a href="/" style="text-decoration: none; color: inherit">Upstream</a></h1>
+    </div>
+    <div class="col-md-8" id='topRow'>
+      <form class="navbar-form navbar-right" action="/search" method="get" role="search">
+        <div class="form-group">
+          <input id="search" name="search" type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+      </form>
+    </div>
+    <div class="col-md-1" id='topRow'>
+
+      <a href="#" class="dropdown-toggle navbar-right" data-toggle="dropdown" role="button" aria-expanded="false"><span class="caret"></span></a>
+      <ul class="dropdown-menu" role="menu">
+        <% if session[:name] == nil %>
+        <li><a href="/login"><span class="text-success"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Login</span></a></li>
+        <% else %>
+        <% @user = User.find_by_name(session[:name]) %>
+        <li><a href=" <%= user_path(@user) %> ">My Profile</a></li>
+        <li><a href="/update">Update Streams</a></li>
+        <li><a href="/games">All Games</a></li>
+        <li><a href=" <%= new_user_stream_path(@user) %> ">Add Stream</a></li>
+        <li><a href=" <%= new_user_weekly_stream_path(@user) %> ">Add Weekly Stream</a></li>
+        <li><a href="/auth/twitter">Add/Update Twitter</a></li>
+        <li class="divider"></li>
+        <li><a href="/logout"><span class="text-danger"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout</span></a></li>
+        <% end %>
+      </ul>
+
+        <% if session[:name] != nil %>
+        <% @user = User.find_by_name(session[:name]) %>
+      <button href="<%= user_path(@user) %>" class="btn btn-default navbar-btn navbar-right"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></button>
+
+
+
+        <% if @user.name == session[:name] %>
+        <%= link_to "<button class=\"btn btn-default navbar-btn navbar-right\"><span class=\"glyphicon glyphicon-plus\" aria-hidden=\"true\"></span></button>".html_safe, new_user_stream_path(@user) %>
+        <% end %>
+        <% end %>
     </div>
   </div>
+</nav>
 
-<% if session[:name] %>
-<p>Logged in as <%= session[:name] %></p>
-<% end %>
-<%= yield %>
+  <%= yield %>
 
+<!--
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="col-md-6">
+        <ul class="nav navbar-nav">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Terms &amp; Conditions</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+-->
+    <center><p>© 2015 Upstream Inc.</p></center>
 </body>
 </html>

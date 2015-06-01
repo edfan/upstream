@@ -11,25 +11,69 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150118200709) do
+ActiveRecord::Schema.define(version: 20150512132836) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "delayed_jobs", force: true do |t|
+    t.integer  "priority",   default: 0, null: false
+    t.integer  "attempts",   default: 0, null: false
+    t.text     "handler",                null: false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+
+  create_table "games", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "streams", force: true do |t|
     t.string   "title"
     t.string   "game"
     t.text     "description"
-    t.datetime "start"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "starttime"
+    t.datetime "endtime"
+    t.text     "tweet"
   end
 
-  add_index "streams", ["user_id"], name: "index_streams_on_user_id"
+  add_index "streams", ["user_id"], name: "index_streams_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"
     t.text     "follows"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "token"
+    t.string   "secret"
   end
+
+  create_table "weekly_streams", force: true do |t|
+    t.string   "title"
+    t.string   "game"
+    t.text     "description"
+    t.time     "starttime"
+    t.time     "endtime"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "day"
+    t.integer  "user_id"
+    t.text     "tweet"
+  end
+
+  add_index "weekly_streams", ["user_id"], name: "index_weekly_streams_on_user_id", using: :btree
 
 end
