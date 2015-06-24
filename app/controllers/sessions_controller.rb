@@ -19,6 +19,7 @@ class SessionsController < ApplicationController
 
     @data = @twitch.auth(params[:code])
     session[:access_token] = @data[:body]["access_token"]
+    puts(@data)
 
     @twitch = Twitch.new({
       :client_id => CLIENT_ID,
@@ -27,6 +28,7 @@ class SessionsController < ApplicationController
       :access_token => session[:access_token]
     })
     @apiuser = @twitch.getYourUser()
+    puts(@apiuser)
     session[:name] = @apiuser[:body]["display_name"]
 
     puts(session[:access_token])
